@@ -244,7 +244,6 @@ const validatetMove = function ({ asciiPosition: position, type: playerType, col
         isValidLooser = true;
       }
       looser = loser;
-      loser && console.log(`looser is from same team ${color}`);
     };
     checkLooser();
 
