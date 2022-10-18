@@ -207,7 +207,6 @@ const onboardPieces = function () {
 };
 
 const validatetMove = function ({ asciiPosition: position, type: playerType, color }) {
-  console.log('validating move');
   let moveStr = '';
   let path = [];
   let isValid = false;
@@ -222,26 +221,18 @@ const validatetMove = function ({ asciiPosition: position, type: playerType, col
     }
   });
 
-  console.log(`taken positions ${takenPositions}`);
-
   while (!isValid) {
-    console.log(`entering while loop with ${playerType} at position ${position}`);
-    console.log(position);
     switch (playerType) {
       case 'knight':
         moveStr = generateKnightMoves(position);
-        console.log(`generating move ${moveStr} `);
         break;
       case 'bishop':
         moveStr = generateBishopMoves(position);
         path = generatePath(position, moveStr);
-        console.log(`generating move ${moveStr} and path ${path}`);
         break;
       case 'queen':
         moveStr = generateQueenMoves(position);
         path = generatePath(position, moveStr);
-        console.log(`generating move ${moveStr} and path ${path}`);
-
         break;
       default:
         console.log('no such player type');
@@ -249,11 +240,7 @@ const validatetMove = function ({ asciiPosition: position, type: playerType, col
 
     const checkLooser = function () {
       const loser = pieces.find(piece => piece.position === moveStr);
-      console.log(`lOser found is ${loser?.name}`);
       if (loser && loser.color !== color) {
-        console.log(
-          `valid looser is ${loser.name} with color ${loser.color} at position ${moveStr}. current color ${color}`
-        );
         isValidLooser = true;
       }
       looser = loser;
@@ -264,32 +251,23 @@ const validatetMove = function ({ asciiPosition: position, type: playerType, col
     if (playerType === 'knight' && isValidLooser) {
       if (takenPositions.includes(moveStr)) {
         isWinner = true;
-        console.log(`${playerType} WOOONN!!!!! over piece at position ${moveStr}`);
       }
-      console.log(`valid ${playerType} move. Returning...`);
       return { moveStr, path, isWinner };
     }
 
     for (const pos of takenPositions) {
-      console.log(`entering for loop to check if next move has obstacles`);
       if (playerType !== 'knight' && pos === moveStr && isValidLooser) {
-        console.log(`winner move from ${position} to ${moveStr}`);
-        console.log(moveStr);
         isWinner = !findCommonElements(path, takenPositions);
         if (isWinner) {
-          console.log(`${playerType} has WOOON!!!!!! over piece at ${moveStr}. Returning...`);
           return { moveStr, path, isWinner };
         }
       }
-      console.log(`no obstacles found`);
     }
 
     isValid = !findCommonElements(path, takenPositions) && !looser;
     if (isValid) {
-      console.log(`move ${moveStr} is valid ${isValid}. Returning...`);
       return { moveStr, path, isWinner };
     } else {
-      console.log(`${moveStr} is NOT valid. Going for new iteration`);
     }
   }
 };
@@ -298,7 +276,6 @@ const updateUI = function ({ name, position }, move, isWinner) {
   if (isGameOver) return;
   if (isWinner) {
     const loserCell = document.getElementById(move);
-    console.log(`loser cell is ${loserCell}`);
     loserCell.removeChild(loserCell.firstChild);
   }
 
@@ -321,7 +298,6 @@ const getNextPlayer = function () {
   });
 
   isGameOver = wTeam.length === 0 || bTeam.length === 0;
-  console.log(`GAME OOOOVERRR!!! is over ${isGameOver}`);
   return wTeamTurn
     ? wTeam[Math.floor(Math.random() * wTeam.length)]
     : bTeam[Math.floor(Math.random() * bTeam.length)];
