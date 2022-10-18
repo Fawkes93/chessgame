@@ -5,6 +5,7 @@ body {
 }
 
 .main-wrapper {
+  margin: auto;
   max-width: 800px;
   display: flex;
   flex-direction: column;

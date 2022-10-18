@@ -347,7 +347,7 @@ const makeMove = function (run) {
   currentPlayer.asciiPosition = [+moveStr[0].charCodeAt(), +moveStr[1]];
 };
 const startGame = function () {
-  const run = setInterval(() => makeMove(run), 100);
+  const run = setInterval(() => makeMove(run), 500);
 };
 
 const resetGame = function () {
