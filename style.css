@@ -32,9 +32,8 @@ table {
 
 td,
 th {
-  width: 55px;
-  height: 55px;
-  text-align: center;
+  height: 45px;
+  width: 45px;
 }
 
 td {
@@ -42,7 +41,7 @@ td {
 }
 
 img {
-  max-width: 45px;
+  max-width: 80%;
 }
 
 .buttons {
