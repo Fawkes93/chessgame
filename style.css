@@ -2,7 +2,7 @@ body {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  background-color: #e0d7d2;
+  background-color: #ffffff;
 }
 
 .main-wrapper {
@@ -27,14 +27,13 @@ tr:nth-child(even) td:nth-child(odd) {
 }
 
 .chess-table {
-  justify-content: center;
-  display: flex;
-  margin-top: 30px;
-  text-align: center;
+  margin-top: 25px;
 }
 
 .chess-table > table {
   border-spacing: 0;
+  margin: auto;
+  border: 20px solid #e0d7d2;
 }
 
 td {
