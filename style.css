@@ -13,12 +13,12 @@ body {
 }
 
 .message-board {
+  margin: 15px;
   height: 50px;
   font-size: 18px;
   text-align: center;
 }
 
-/* not entirely sure how this declaration works, but it works. */
 tr:nth-child(odd) td:nth-child(even),
 tr:nth-child(even) td:nth-child(odd) {
   background: #1c483d;
@@ -55,6 +55,29 @@ img {
 
 .buttons {
   margin: auto;
-  display: inline-flex;
   text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.button-wrapper {
+  margin: 0 40px;
+}
+
+button {
+  background-color: #1c483d;
+  border-radius: 8px;
+  border-width: 0;
+  color: #e0d7d2;
+  font-size: 14px;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  cursor: pointer;
+}
+
+button:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }
