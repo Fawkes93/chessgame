@@ -2,22 +2,23 @@ body {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  background-color: #e0d7d2;
 }
 
 .main-wrapper {
   margin: auto;
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
+  text-align: center;
+  max-width: 600px;
 }
 
 .message-board {
   height: 50px;
   font-size: 18px;
+  text-align: center;
 }
 
-/* not entirely sure how this declaration works, but it works */
+/* not entirely sure how this declaration works, but it works. */
 tr:nth-child(odd) td:nth-child(even),
 tr:nth-child(even) td:nth-child(odd) {
   background: #1c483d;
@@ -25,19 +26,27 @@ tr:nth-child(even) td:nth-child(odd) {
   border: 1px solid black;
 }
 
-table {
-  margin: auto;
+.chess-table {
+  justify-content: center;
+  display: flex;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.chess-table > table {
   border-spacing: 0;
 }
 
-td,
-th {
+td {
   height: 45px;
   width: 45px;
+  border: 1px solid;
 }
 
-td {
-  border: 1px solid;
+th {
+  background-color: #e0d7d2;
+  width: 10px;
+  font-size: 10px;
 }
 
 img {
@@ -46,16 +55,6 @@ img {
 
 .buttons {
   margin: auto;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.buttons > div {
-  line-height: 40px;
-  margin: 10px;
-  width: 50px;
-}
-
-button {
-  size: 20px;
+  display: inline-flex;
+  text-align: center;
 }
