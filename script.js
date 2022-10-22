@@ -5,6 +5,7 @@
 const chessTable = document.querySelector('.chess-table');
 const tableCells = chessTable.getElementsByTagName('td');
 const startBtn = document.getElementById('start');
+const stopBtn = document.getElementById('stop');
 const resetBtn = document.getElementById('reset');
 const messageBoard = document.querySelector('.message-board');
 
@@ -308,7 +309,7 @@ const makeMove = function (run) {
     clearInterval(run);
     return;
   }
-  startBtn.disabled = true;
+  // startBtn.disabled = true;
   currentPlayer = getNextPlayer();
   const { isWinner, moveStr } = validatetMove(currentPlayer);
   updateUI(currentPlayer, moveStr, isWinner);
@@ -321,8 +322,18 @@ const makeMove = function (run) {
   currentPlayer.position = moveStr;
   currentPlayer.asciiPosition = [+moveStr[0].charCodeAt(), +moveStr[1]];
 };
+
 const startGame = function () {
   const run = setInterval(() => makeMove(run), 500);
+  stopBtn.addEventListener('click', () => pauseGame(run));
+};
+
+const pauseGame = function (intervalId) {
+  clearInterval(intervalId);
+  stopBtn.disabled = true;
+  startBtn.disabled = false;
+
+  // startBtn.style.visibility = 'visible';
 };
 
 const resetGame = function () {
@@ -332,7 +343,12 @@ const resetGame = function () {
 const init = function () {
   onboardPieces();
 
-  startBtn.addEventListener('click', () => startGame());
+  startBtn.addEventListener('click', () => {
+    startBtn.disabled = true;
+    stopBtn.disabled = false;
+    startGame();
+  });
+
   resetBtn.addEventListener('click', () => resetGame());
 };
 init();
